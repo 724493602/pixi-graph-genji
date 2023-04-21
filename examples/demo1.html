@@ -1,0 +1,3129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="graph" style="height: 100vh;width: 100vw"></div>
+<button id="toggle" style="position: absolute;left: 10px;top:50px">切换模式</button>
+<script  type="module">
+  import { Graph } from '../dist/pixi-graph-genji.es.js';
+  const config = {
+    container: 'graph',
+    fps: true,
+    modes: {
+      default: ['drag-node', 'drag-canvas', 'zoom-canvas', 'create-edge'],
+      look: ['drag-canvas', 'zoom-canvas',]
+    },
+  };
+  const graph = new Graph(config);
+  let data ={
+      "nodes": [
+          {
+              "id": "iVRQ6iGwZFGQQvVtX",
+              "name": "低钠",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ijDH0NWRPlouCtBXL",
+              "name": "继发性高血压",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i5KAvPvO9wWc5JIXg",
+              "name": "小儿脑性瘫痪",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iVABEQgxUtkR0wwTD",
+              "name": "酒精性慢性胰腺炎",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i3bY8Cbga6v4Do2RU",
+              "name": "幽门螺杆菌的胃内感染",
+              "style": {
+                  "fill": "rgba(158,28,219,1)"
+              }
+          },
+          {
+              "id": "i5cznnYD41B0mTF0D",
+              "name": "慢性肾病",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iR3rXaW842ygxasez",
+              "name": "心肌灌注减少",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iyVEP444LKRYDMVPA",
+              "name": "肝癌",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "imqGgedvkLFXG8zb9",
+              "name": "心绞痛",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i2eFeitlYjkk2sElE",
+              "name": "自杀率很高",
+              "style": {
+                  "fill": "rgba(103,68,116,1)"
+              }
+          },
+          {
+              "id": "iuvAe6iBzrAj9mTgb",
+              "name": "妊娠肝内胆汁淤积症",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i5gWl5T3eEhVIfqdR",
+              "name": "血管炎",
+              "style": {
+                  "fill": "rgba(158,28,219,1)"
+              }
+          },
+          {
+              "id": "iHkwHEfg08ty9zlh7",
+              "name": "PPHN",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iqgMp71v7PJ5mxwa8",
+              "name": "骨肿瘤",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iVibN7AncgYGAzf54",
+              "name": "细菌性肺炎",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ipWkEua4xwpW5ZP72",
+              "name": "10/10万",
+              "style": {
+                  "fill": "rgba(61,183,42,1)"
+              }
+          },
+          {
+              "id": "iNNubO8csleHOYbDc",
+              "name": "B族链球菌感染",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iKq67vl8s8DBCqlMp",
+              "name": "输血",
+              "style": {
+                  "fill": "rgba(61,183,42,1)"
+              }
+          },
+          {
+              "id": "iKsRDpYkAU9E264uP",
+              "name": "儿童高血压",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i6MIpWKvVQ0rtcFp0",
+              "name": "黑人种族",
+              "style": {
+                  "fill": "rgba(158,28,219,1)"
+              }
+          },
+          {
+              "id": "iUGcywItsLPVjljwB",
+              "name": "纤维肉瘤",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iYB6Wg4tNb6zm4KWS",
+              "name": "耳鼻喉科",
+              "style": {
+                  "fill": "rgba(61,125,242,1)"
+              }
+          },
+          {
+              "id": "ixcfDmFnZQRDkt6PU",
+              "name": "重型地中海贫血",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iNVF2Jx60HH7NTT5l",
+              "name": "ITP",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i3JMLvUgejrEeSftF",
+              "name": "勒-雪综合征",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iPkWEGpjtdeQ45SLa",
+              "name": "冠状动脉痉挛",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "isI5mZlR3W5ot3nhv",
+              "name": "重症感染",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iEK4yWhbssYPeE0pF",
+              "name": "尘肺",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "irbsghuPIBKY1Gv08",
+              "name": "幼年型皮肌炎",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iPTvFkKLwyNxw02kW",
+              "name": "经皮针吸活组织检查",
+              "style": {
+                  "fill": "rgba(212,161,113,1)"
+              }
+          },
+          {
+              "id": "iVjbJTuh7Mg6IlrrD",
+              "name": "新生儿高血糖",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ij0wpZQcXgMcTbbzH",
+              "name": "肛门测压检査",
+              "style": {
+                  "fill": "rgba(212,161,113,1)"
+              }
+          },
+          {
+              "id": "ix2EyqiMlE9EJ9qha",
+              "name": "内分泌失调",
+              "style": {
+                  "fill": "rgba(158,28,219,1)"
+              }
+          },
+          {
+              "id": "iyDJZTxg8lFlMQNbc",
+              "name": "污染的日用品、手、玩具",
+              "style": {
+                  "fill": "rgba(61,183,42,1)"
+              }
+          },
+          {
+              "id": "ifvm3yZcnwX7oMhgu",
+              "name": "骶尾部",
+              "style": {
+                  "fill": "rgba(55,33,163,1)"
+              }
+          },
+          {
+              "id": "ikXCTUiL1zVSufttZ",
+              "name": "睾丸癌",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iShSr0oQenc6tSiDz",
+              "name": "卵巢癌",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iMzS0cuFQ83B5XALB",
+              "name": "高钠血症",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ih0AbiQRPvBbsyVlb",
+              "name": "耳痛",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "iMVVxLwqZH9ASbO6f",
+              "name": "肺孢子虫病",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iuOqPbn0PQdERH6ln",
+              "name": "急性髓性白血病",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i31bAbZ1ybvmJGsYA",
+              "name": "水肿",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i46O0vAZNllIJREwX",
+              "name": "智力缺陷",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ih782x0sx3aalYIer",
+              "name": "急性冠状动脉综合征",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "idjoYsgFfutKryESE",
+              "name": "脑白质损伤",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iobyLMOtZ5C4tLfDy",
+              "name": "AAA 管壁应力峰值",
+              "style": {
+                  "fill": "rgba(158,28,219,1)"
+              }
+          },
+          {
+              "id": "iPkJOnJCBJ8tQQgH8",
+              "name": "重度瘙痒",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "idnln8bIqLBdM2rt9",
+              "name": "慢性胃炎",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iLLKy5wQOMdBSND2X",
+              "name": "新生儿黄疸",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i7NZWm7s3Vodwq77C",
+              "name": "生长激素缺乏症",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iVMIXSfw2KxiVaSk7",
+              "name": "淹溺",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "inPSVnDwZb7hcxBVS",
+              "name": "死胎",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iYasL1pV4TTlVgRFm",
+              "name": "低血糖",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iJtZvKmJdkiocVmCB",
+              "name": "真菌性脑膜炎",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iZdHap8UKLRLoGX61",
+              "name": "意识障碍",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i6fTSUsqErNWbao4X",
+              "name": "PKU",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iRhlZMRnqj1XO8z3a",
+              "name": "原发性儿童MDS",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ifqyq9KmjegK8juDU",
+              "name": "青霉胺",
+              "style": {
+                  "fill": "rgba(158,28,219,1)"
+              }
+          },
+          {
+              "id": "is3AbyUYpVHo7FbG2",
+              "name": "婴儿间质性浆细胞肺炎",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iDcptargetTus4OsvXDvS",
+              "name": "谵妄",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ipJnIyZId4zIenLpx",
+              "name": "放射性核素显像",
+              "style": {
+                  "fill": "rgba(212,161,113,1)"
+              }
+          },
+          {
+              "id": "iG9OJYiaIit0M7M2K",
+              "name": "3 ～ 6个月的体弱婴儿",
+              "style": {
+                  "fill": "rgba(61,183,42,1)"
+              }
+          },
+          {
+              "id": "iTe1Ci95Zt3Ihn1d5",
+              "name": "慢性淋巴细胞白血病",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iFWW8U8M8tClWAdah",
+              "name": "慢性胰腺炎",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "izEzyI2hRbNOwcIoY",
+              "name": "NFⅡ",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iK4oD2r4z5FlHDXVe",
+              "name": "小舞蹈症",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "igDU2bJIULY50edrO",
+              "name": "反射充进",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "iXsX5h7zIMhNOeG4u",
+              "name": "白喉",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iL6NvP694583Gl219",
+              "name": "认知障碍",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i7LI7Ejz2fqTUaL8f",
+              "name": "人粒细胞无形体病",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "izUEDM03FhjUQBmde",
+              "name": "世界末日来临感",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "ijgU5kXzBpPFL8kGB",
+              "name": "Bartter综合征",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iLco8RNQvkU89Uj78",
+              "name": "50%有颈蹼",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "i3IxbAcNjdP1WKoY1",
+              "name": "低钙血症",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "imW4BEo5B6T8mAFTR",
+              "name": "麻痹",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "ixy7Q5tbGo71xJlw2",
+              "name": "消化性溃疡病",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ixIjBLREDV53aanv2",
+              "name": "AMSAN",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iOdl9N9qIeAFXSTd9",
+              "name": "无呕血",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "imdCK11AVzXtarget5YVS",
+              "name": "颞下颌关节疾病",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ikpcsp9EO7eTBfC2a",
+              "name": "7号染色体单体",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iyXKYpbTEE7KwV1im",
+              "name": "传染性单核细胞增多症",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iFrT8rUUsrt0Mb3Hj",
+              "name": "口咽癌",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "inhP74pX6KkfgaboS",
+              "name": "TBMN",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iagFcdWUZIrJgGoJ7",
+              "name": "感染性心内膜炎",
+              "style": {
+                  "fill": "rgba(158,28,219,1)"
+              }
+          },
+          {
+              "id": "iFzDsOGSn8nSGO3PV",
+              "name": "体育锻炼",
+              "style": {
+                  "fill": "rgba(202,207,213,1)"
+              }
+          },
+          {
+              "id": "itcPoSbTQugcmjy7f",
+              "name": "HSPN",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iSvkjJOEm0JfYYDeu",
+              "name": "中耳炎",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iBT1fiIVN41XUnMkB",
+              "name": "急性或慢性血吸虫病",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iHgSg3FbrFJWNNu4V",
+              "name": "药物性肾脏损害",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iavC8KZ50oRKtBCxW",
+              "name": "婴儿猝死综合征",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i1qlhWQ1ihoCy8Ulu",
+              "name": "脓毒症",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ixy1WCDGK5Y2yPHeR",
+              "name": "ESR加快",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iuFy0MHs9XQSLSm9N",
+              "name": "畸形",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "iwQfTX7hOPAdGbEJc",
+              "name": "疟疾感染",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i1p2dqQIl5Ur5lqGl",
+              "name": "乳腺原位癌",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iGBQdMNscaoTKlh9x",
+              "name": "乳突炎",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ii1Jh7sxSJ0uJWDjo",
+              "name": "AAA 超声筛查",
+              "style": {
+                  "fill": "rgba(212,161,113,1)"
+              }
+          },
+          {
+              "id": "iYlR0G7kxvdpVKCxU",
+              "name": "脑脓肿",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "il3rxFRkZIv5e6hoz",
+              "name": "切牙孔前的结构",
+              "style": {
+                  "fill": "rgba(55,33,163,1)"
+              }
+          },
+          {
+              "id": "iPlkZkNGBE5Q5aayD",
+              "name": "晚期慢性胰腺炎",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "il4dfJJWOHETPtxIl",
+              "name": "不明原因发热",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iZ9OLJqusPpIplLXh",
+              "name": "颗粒层增厚",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "i1XnLZhtahGNLlhcw",
+              "name": "显微喉镜",
+              "style": {
+                  "fill": "rgba(212,161,113,1)"
+              }
+          },
+          {
+              "id": "iMlFXFHFu17f8vNF9",
+              "name": "激惹",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "iYhqIeBehGGIwFfAo",
+              "name": "肾小管-间质疾病",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i9b3NIuo3NEZo7VrX",
+              "name": "继发性肾病综合征病",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iRLHmyX4eDijkDl7G",
+              "name": "室上速",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iWQ602qT9yYBXx1Oe",
+              "name": "干扰素-a2b",
+              "style": {
+                  "fill": "rgba(184,49,118,1)"
+              }
+          },
+          {
+              "id": "iWsMPLVfVhEUE9yhX",
+              "name": "输尿管常常也无扩张",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "iHXx6XedjFliAgvyu",
+              "name": "痛风",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i6KuiNffi3DiqiJB9",
+              "name": "芬兰型CNS",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ibRAim0ZACMw1HBiw",
+              "name": "严重失眠",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "i7nqkGlhHkIvG14Fm",
+              "name": "声门上型喉癌",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iUYyrsWQmuQs3FgAv",
+              "name": "血管内溶血",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iqGgcMXFws8iJaZ6H",
+              "name": "先天性巨结肠",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iV95Hr4yIXumLy56c",
+              "name": "系统性红斑狼疮",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iE35bIe237CuJKZbT",
+              "name": "舞蹈样异常运动",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "iUohsASQhOAli4hbl",
+              "name": "反复发作的、可逆的喘息",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "icNp9uckPZb8ZlpZC",
+              "name": "腰椎前突",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "iNa5xv7ERiSW348j8",
+              "name": "女性多于男性",
+              "style": {
+                  "fill": "rgba(61,183,42,1)"
+              }
+          },
+          {
+              "id": "iyyjXRCVeka30wHqB",
+              "name": "气管软化症",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ixJ1HIgWlH3KcGQLt",
+              "name": "TIN",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i4C7YTz59rKxeOLFW",
+              "name": "尸体剖检",
+              "style": {
+                  "fill": "rgba(212,161,113,1)"
+              }
+          },
+          {
+              "id": "iKUGwf4sY82rM8xdO",
+              "name": "急性肾小管坏死",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "izoTIvlaujP6eace0",
+              "name": "腹主动脉瘤@破裂",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iAQ9sT2poa7Vj1zV4",
+              "name": "苯丙酮尿症",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i2WeMi2KA0hXSIhmi",
+              "name": "支气管哮喘",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iJ3zb0v8aL9ZuGaXA",
+              "name": "过敏原特异性 IgE 免疫测定",
+              "style": {
+                  "fill": "rgba(212,161,113,1)"
+              }
+          },
+          {
+              "id": "iTBdNg9kHV3gpwxCE",
+              "name": "HELLP 综合征",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "irABP9MQKBRZY8WPo",
+              "name": "色素加深",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "i0Sk0Vr9Koq3I1OVl",
+              "name": "自身免疫性肝炎",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "izizZ65L5IsiHulqf",
+              "name": "适当的负重训练",
+              "style": {
+                  "fill": "rgba(202,207,213,1)"
+              }
+          },
+          {
+              "id": "ijtA7HlUmhciB2JVV",
+              "name": "矽肺病",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ipCgHCjzbeCc8ivgu",
+              "name": "直接逆转录病毒脑病",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iyn7KznrJc5YF5Bvq",
+              "name": "某些避孕药",
+              "style": {
+                  "fill": "rgba(158,28,219,1)"
+              }
+          },
+          {
+              "id": "iF1JqrQCoZZ70Yb1z",
+              "name": "快速检测试验",
+              "style": {
+                  "fill": "rgba(212,161,113,1)"
+              }
+          },
+          {
+              "id": "ioO4Wf5CeXsjkhtET",
+              "name": "下肢肿胀",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "i2VF7JB62dWEzFYd5",
+              "name": "非小细胞肺癌",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iBUChkbMt2J8c0XuJ",
+              "name": "溃疡杆菌",
+              "style": {
+                  "fill": "rgba(158,28,219,1)"
+              }
+          },
+          {
+              "id": "iPR32c3WrTkqBfBTR",
+              "name": "痰涂片检测",
+              "style": {
+                  "fill": "rgba(212,161,113,1)"
+              }
+          },
+          {
+              "id": "iszQFi7a1WPzGU3MU",
+              "name": "帕金森病",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ikuoHAGES0newP0fl",
+              "name": "骨髓呈增生性特征",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "iJP5kWqtWnZJ326I4",
+              "name": "给予抗毒素",
+              "style": {
+                  "fill": "rgba(61,125,242,1)"
+              }
+          },
+          {
+              "id": "i86PRGIx6O4JWypZP",
+              "name": "粪便脂肪含量高于7 g/日",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "ihXORhr1YZlDNRNi3",
+              "name": "基底细胞癌",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iBGHFNwXqXAR8D88b",
+              "name": "一氧化氮",
+              "style": {
+                  "fill": "rgba(202,207,213,1)"
+              }
+          },
+          {
+              "id": "iMdSofiaA6SFGFmMH",
+              "name": "Zellweger综合征",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i1i3MYqugBmv2HBa5",
+              "name": "磁共振胰胆管造影术",
+              "style": {
+                  "fill": "rgba(80,224,158,1)"
+              }
+          },
+          {
+              "id": "iVCwpOA7ZBYoxJREW",
+              "name": "粪便检测",
+              "style": {
+                  "fill": "rgba(212,161,113,1)"
+              }
+          },
+          {
+              "id": "i1Ibo5DPlkx6TmJgr",
+              "name": "无脑畸形",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iSsDyDVSkQA1WDo13",
+              "name": "中耳渗液",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "iGWWAVQookWZJdzef",
+              "name": "肺部广泛浸润",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "i3u6BYORfjtrKobcj",
+              "name": "氧化应激",
+              "style": {
+                  "fill": "rgba(158,28,219,1)"
+              }
+          },
+          {
+              "id": "iPCq7EitSb47GQAXi",
+              "name": "远端 (dCCA)",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iUljQi6J0NYPyDDDc",
+              "name": "冠状动脉心脏病",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iAwtP6TGTRdwPOhuE",
+              "name": "罹患哮喘",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "imJBpEXV3rFb08Sdj",
+              "name": "1/3 000～1/4 000",
+              "style": {
+                  "fill": "rgba(61,183,42,1)"
+              }
+          },
+          {
+              "id": "iODXNifWrAJhAcZP9",
+              "name": "侵袭性非霍奇金淋巴瘤",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "igyQvFRtuoBqGtH4X",
+              "name": "黑人",
+              "style": {
+                  "fill": "rgba(158,28,219,1)"
+              }
+          },
+          {
+              "id": "ipZePs2jU4DT31A35",
+              "name": "早产",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iF581Y2xsrGdfV6oJ",
+              "name": "轴索受损",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "ikKkMXrt1hh9sShHt",
+              "name": "胸锁乳突肌的下半部",
+              "style": {
+                  "fill": "rgba(55,33,163,1)"
+              }
+          },
+          {
+              "id": "iXLM5LtY2Bm1bTw5o",
+              "name": "中毒性",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iVMwvNCTgbutvRgRw",
+              "name": "急性过敏性间质性肾炎",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i9rD0JgNu9dKlWb9k",
+              "name": "CNS",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iBL7DW3oPQHmui7EQ",
+              "name": "急性逆转录病毒综合征",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i0ZEGXlkEvHNBRf7Q",
+              "name": "情绪不稳",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "i74UxO1kxYkYnj8e0",
+              "name": "感染的治疗",
+              "style": {
+                  "fill": "rgba(202,207,213,1)"
+              }
+          },
+          {
+              "id": "iMHg7iUB00o4gyYNY",
+              "name": "慢性喉炎",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iZi6AT6uyvwAILmC9",
+              "name": "克-雅病",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ifixEk7ioYLfTek0j",
+              "name": "手足口病",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ij4gve5iYgujoMJHd",
+              "name": "高血压急症",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i1OczJKZ12fhnyE7M",
+              "name": "类风湿关节炎",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ipHFddaKcRXmHOHrp",
+              "name": "皮肤、毛发色素浅淡",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "iYRGyoUA6axTbbPR2",
+              "name": "狂犬病",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i6Ir9BP9FsFJs53WE",
+              "name": "中枢神经系统肿瘤",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iuEZ8YFraPhn97vgO",
+              "name": "双动脉下型缺损",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iP3FAt7R5QC23KKCI",
+              "name": "符号、数字、模式测试",
+              "style": {
+                  "fill": "rgba(202,207,213,1)"
+              }
+          },
+          {
+              "id": "itHpw5t11LV6FNe7j",
+              "name": "高渗血症",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "iiilGpWkmPMOaEYYM",
+              "name": "血清变应原特异性IgE测定",
+              "style": {
+                  "fill": "rgba(212,161,113,1)"
+              }
+          },
+          {
+              "id": "iTBJEFk7Oj8W0Nzsd",
+              "name": "缺氧性脑损伤",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iJEp1lLP6F7ic4xhb",
+              "name": "胆管癌",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iLzKyYNgBXF1Sk9Kp",
+              "name": "生长异常",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "illDZUckFnovLgCKG",
+              "name": "辅助（术后）放疗",
+              "style": {
+                  "fill": "rgba(202,207,213,1)"
+              }
+          },
+          {
+              "id": "ixIiGE48glolemJhB",
+              "name": "CD20单抗",
+              "style": {
+                  "fill": "rgba(184,49,118,1)"
+              }
+          },
+          {
+              "id": "iVi2G9YgHlWt69Ilv",
+              "name": "川崎病",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iPAODcwHuAKyKHKLR",
+              "name": "肝豆状核变性",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i9EWXAD5VPVzfbuB0",
+              "name": "震颤性谵妄",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ioxoeFmfHP2xntpMu",
+              "name": "GAD",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i6PugPS6tGZa1s4Zs",
+              "name": "单纯母乳喂养",
+              "style": {
+                  "fill": "rgba(158,28,219,1)"
+              }
+          },
+          {
+              "id": "iUkRX3HAWW9sXfxhn",
+              "name": "软组织肉瘤",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ipyorvxIlWbZRXm63",
+              "name": "脑膜炎",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iXCcogRvCuH4wdKBt",
+              "name": "产后抑郁症",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iQvmYxVJElBF4Or3w",
+              "name": "周围神经病变",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iKm4lq4NPhmWo9DNR",
+              "name": "胰腺外分泌功能障碍",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iBro9PdQODgL39w7p",
+              "name": "原发性腭裂",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ij9gMXnZmukvFM1E1",
+              "name": "压迫感",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "iQ9ChrSptargetwjtjNSy",
+              "name": "胸水",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ixXWRvxDaIsVSyxoD",
+              "name": "HLH",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iq5h2PohE5J9TlIPF",
+              "name": "网织红细胞增多",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "idCGeSk3ZRBEGM26I",
+              "name": "多学科诊断小组",
+              "style": {
+                  "fill": "rgba(212,161,113,1)"
+              }
+          },
+          {
+              "id": "io26IFrdJ0W82PuPr",
+              "name": "隐睾",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ij6targettJ4xLNAem5Be",
+              "name": "轻度情绪障碍",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iGvTDyNuvmzYEASu3",
+              "name": "头孢三嗪",
+              "style": {
+                  "fill": "rgba(184,49,118,1)"
+              }
+          },
+          {
+              "id": "iIQNTUaY9hvHGAVcq",
+              "name": "成人哮喘",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "itlOFZid368phOa4e",
+              "name": "SMA-Ⅲ型",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iQjPrMPeK5SHZEwKl",
+              "name": "先天性梅毒",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i6yc0YUY53EiuQfFE",
+              "name": "尿中失钾",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "infRGgIJ8opzFkdqE",
+              "name": "破伤风",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iGyj5vIw7QvT2WMqW",
+              "name": "高氨血症",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i1fb2BP900rSLyGv9",
+              "name": "婴儿血管外皮细胞瘤",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ijrFpBp7G2IiwnJ4J",
+              "name": "肝硬化",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iYGmwtargetOL58M7kJlc",
+              "name": "脑水肿",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iOKj7nkrvng60qpEm",
+              "name": "弓形虫病",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iPq7lE6BV4q8RUbld",
+              "name": "脑炎",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ihi4xY8l5oSfuW0DI",
+              "name": "积极预防",
+              "style": {
+                  "fill": "rgba(202,207,213,1)"
+              }
+          },
+          {
+              "id": "igVVloEFQavtHFlor",
+              "name": "腺体炎性反应",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "i6mWGY59qhRTWIY2x",
+              "name": "Turner综合征",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ifqdMf3YGwQQeJ51Q",
+              "name": "免疫抑制性肺损伤",
+              "style": {
+                  "fill": "rgba(158,28,219,1)"
+              }
+          },
+          {
+              "id": "iVLaeuL4UCnRD2v9X",
+              "name": "惊恐障碍",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "idHsgq3Dbbo6v2I0s",
+              "name": "下消化道出血",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ilfFZRM4JVSbsMaIc",
+              "name": "神经源性膀胱",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iuHkyZ3vovwaGUkBL",
+              "name": "中枢性性早熟",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "itkCUaYObFdbILsX5",
+              "name": "口服抗生素",
+              "style": {
+                  "fill": "rgba(184,49,118,1)"
+              }
+          },
+          {
+              "id": "isDbZ4d8ABydk6EKi",
+              "name": "ARDS",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iEYYJE3d2soMw9G4p",
+              "name": "颈纤维瘤",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iWdovjudepLjtbC6C",
+              "name": "消化道钡餐检查",
+              "style": {
+                  "fill": "rgba(212,161,113,1)"
+              }
+          },
+          {
+              "id": "ifjN7g3Ig5AhFKIzX",
+              "name": "腹主动脉瘤",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i7ICj2ZYmr4U1TvDm",
+              "name": "增厚伴淋巴样细胞浸润",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "iL7Ui3l7u2JdUwlBa",
+              "name": "HCMV感染",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iKeq8pYbRSStSZ7gW",
+              "name": "常规治疗",
+              "style": {
+                  "fill": "rgba(202,207,213,1)"
+              }
+          },
+          {
+              "id": "iFAi1HyBrahzbENWB",
+              "name": "类癌综合征",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iaIi0LV5n1OxR7Lc3",
+              "name": "东方人",
+              "style": {
+                  "fill": "rgba(61,183,42,1)"
+              }
+          },
+          {
+              "id": "itkw2yFYLcQLW4anW",
+              "name": "心痛定",
+              "style": {
+                  "fill": "rgba(184,49,118,1)"
+              }
+          },
+          {
+              "id": "iElMlw6xKihdqKDwY",
+              "name": "脾肿大",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "ilsOrAXuWyr5ZOY0I",
+              "name": "伤寒感染",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iUOO5YHbADXLHRVTh",
+              "name": "脑室周围-脑室内出血",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iwireCvxlZmD1PsKA",
+              "name": "深反射亢进",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "izIdxdf8wVARGwg7z",
+              "name": "Hb Bart胎儿水肿综合征",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iaLzRaUNifhS3pM3P",
+              "name": "输尿管重复畸形",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i5w1zsVJiCMCYu8c6",
+              "name": "病毒性脑炎",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ikgBWZQ8TrycDQ1He",
+              "name": "6%至17%",
+              "style": {
+                  "fill": "rgba(61,183,42,1)"
+              }
+          },
+          {
+              "id": "iwNBY0PLg0xSITxox",
+              "name": "转移性乳腺癌",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iIfehu0FTM7JuQHHS",
+              "name": "急性胰腺炎",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iw1ApkrmjHsKrWGf7",
+              "name": "功能性消化不良",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iMT6dOhvIiYv4oLf1",
+              "name": "活性药物",
+              "style": {
+                  "fill": "rgba(184,49,118,1)"
+              }
+          },
+          {
+              "id": "iRzypp3JS7RvYN3Hz",
+              "name": "自发性早产",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ipC9vPaAPivlpHBuM",
+              "name": "去铁酮",
+              "style": {
+                  "fill": "rgba(184,49,118,1)"
+              }
+          },
+          {
+              "id": "iOXM8O3xqfEKNDiQJ",
+              "name": "Wernicke脑病",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i9zUkcf1RwRizBGTB",
+              "name": "妊娠期高血压",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i4jz1j3H8Uy5jeoDO",
+              "name": "慢阻肺",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iFhyi904elKmcg4sO",
+              "name": "第 2 级：轻度持续",
+              "style": {
+                  "fill": "rgba(61,125,242,1)"
+              }
+          },
+          {
+              "id": "iWtX9Q3LkByuCsDPE",
+              "name": "皮下及深部肌肉脓肿",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iIksBoSNjG77ZoA9X",
+              "name": "肾病综合征",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iG4R0GQh9JfIKN97e",
+              "name": "呼吸量测定",
+              "style": {
+                  "fill": "rgba(212,161,113,1)"
+              }
+          },
+          {
+              "id": "inZ9jpR16mTiEY1AM",
+              "name": "广泛性焦虑障碍",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iEkK3RTIYVO77CTLa",
+              "name": "铅中毒",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iawNAlqu5d8v6Nq7i",
+              "name": "血清总胆红素",
+              "style": {
+                  "fill": "rgba(212,161,113,1)"
+              }
+          },
+          {
+              "id": "iinI2fg2gfAUXdf9X",
+              "name": "大胎盘",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "iwMOteX0targetTj7waRA",
+              "name": "化脑",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ifLpnxrV2TKWW6arW",
+              "name": "麻风病",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "isYfv5XDIDxe6CHPR",
+              "name": "非ST段抬高型心肌梗死",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i5cMFbd7QCK1Vg4ST",
+              "name": "胃食管反流",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iTSNhgHMaCW5UHH3B",
+              "name": "食物中毒",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iIQugcMdPlvC74h6z",
+              "name": "AHF",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i1f1WH7homlYOdxFE",
+              "name": "苯妥英钠",
+              "style": {
+                  "fill": "rgba(158,28,219,1)"
+              }
+          },
+          {
+              "id": "i3cnEQ1ZZfQv1KyEH",
+              "name": "疲倦",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "iXffLVR2nMJqfSK1U",
+              "name": "高反应者",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i6jpIYRzjHWGaZg2u",
+              "name": "对惊恐发作的担心",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "iaL5NUSsx1lKrgQ5o",
+              "name": "小儿哮喘",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iYz0t8ZwsWqhX66jc",
+              "name": "腱索断裂",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iBiDYXsaEPPTn3nRR",
+              "name": "呼出气一氧化氮 (eNO)",
+              "style": {
+                  "fill": "rgba(212,161,113,1)"
+              }
+          },
+          {
+              "id": "iwDS89kunh7M7EiLw",
+              "name": "HUS",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iszqGhbrWLEokgUZL",
+              "name": "女性不育症",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i51gmTfskN14hstargetD",
+              "name": "孕酮类药物",
+              "style": {
+                  "fill": "rgba(184,49,118,1)"
+              }
+          },
+          {
+              "id": "iFTTSmNSLSelzN1Fa",
+              "name": "感染性腹泻",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ipmXiAxEaUo3Y4sFU",
+              "name": "血小板抗体测定",
+              "style": {
+                  "fill": "rgba(212,161,113,1)"
+              }
+          },
+          {
+              "id": "ijvONJk3KM8nZCvYR",
+              "name": "面部特征",
+              "style": {
+                  "fill": "rgba(158,28,219,1)"
+              }
+          },
+          {
+              "id": "iRrHmDA5qcQMWGOel",
+              "name": "阴道菌群失调",
+              "style": {
+                  "fill": "rgba(158,28,219,1)"
+              }
+          },
+          {
+              "id": "i03oguRZaBqQh9rB3",
+              "name": "卡那霉素",
+              "style": {
+                  "fill": "rgba(158,28,219,1)"
+              }
+          },
+          {
+              "id": "iqbzCdMpOEgE95Rvk",
+              "name": "肾盂肾炎",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ivHIqhaC166t78Bck",
+              "name": "慢性髓性白血病",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iIA18AZSeP7wieXst",
+              "name": "精神心理异常",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "in1kV4KF9vJ8EzYX1",
+              "name": "男性化表现",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "i5kmZTKxPYzyZMSSP",
+              "name": "生殖细胞性肿瘤",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iF02IizwfkEfFvfwM",
+              "name": "疣状癌",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ir3VXy8mQoMvt30uE",
+              "name": "富含嘌呤类的食物",
+              "style": {
+                  "fill": "rgba(158,28,219,1)"
+              }
+          },
+          {
+              "id": "i5hHC6lQ1IHBgoidY",
+              "name": "31%",
+              "style": {
+                  "fill": "rgba(61,183,42,1)"
+              }
+          },
+          {
+              "id": "iOjTxwmjnkcrLmnDJ",
+              "name": "米索前列醇",
+              "style": {
+                  "fill": "rgba(61,125,242,1)"
+              }
+          },
+          {
+              "id": "iMKyF50DdRKzr1UKm",
+              "name": "腹泻",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iRbY78DnMJUIVaCnu",
+              "name": "床边食管调搏",
+              "style": {
+                  "fill": "rgba(212,161,113,1)"
+              }
+          },
+          {
+              "id": "izJogVLesABTuLD0h",
+              "name": "持续性抑郁症",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ixA94ipR92iyjNtfX",
+              "name": "每年有 1000 到 2000 人",
+              "style": {
+                  "fill": "rgba(61,183,42,1)"
+              }
+          },
+          {
+              "id": "ixLWaVHxewaXtPBPD",
+              "name": "垂体功能减退",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i8MqFDcro0nI7mojg",
+              "name": "代谢障碍",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iRzkds9P56XyFUQ4L",
+              "name": "中毒性疾病",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iswcqO5LuSftWx1m6",
+              "name": "巨细胞病毒感染",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iNtf3vF44rq4EDAaV",
+              "name": "天津",
+              "style": {
+                  "fill": "rgba(61,183,42,1)"
+              }
+          },
+          {
+              "id": "iTDV5SvBRoQAqwExl",
+              "name": "总铁、总铁结合力",
+              "style": {
+                  "fill": "rgba(212,161,113,1)"
+              }
+          },
+          {
+              "id": "imUfSOe5Oz29gvHFm",
+              "name": "眼神发呆",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "i83Rgvdot4lSgG5cN",
+              "name": "双侧乳腺X线检查",
+              "style": {
+                  "fill": "rgba(212,161,113,1)"
+              }
+          },
+          {
+              "id": "ihveegVSIQkd9kCCO",
+              "name": "缺血性卒中",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iF25KH7SKLH9qTaul",
+              "name": "Mohs手术治疗",
+              "style": {
+                  "fill": "rgba(80,224,158,1)"
+              }
+          },
+          {
+              "id": "iMZAvL3XnTwjHMADL",
+              "name": "凝血并发症",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "imjqZDpZFW1y2Pelw",
+              "name": "肺吸虫病",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "ibdjfAQlYT31BDRG2",
+              "name": "感染性心内膜炎",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iRGqL2M1bHNPjJrH0",
+              "name": "溃疡",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iUuz2JXgxOZqvPFLm",
+              "name": "宫内发育迟缓",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iP3nYK1yjnaU1QdtR",
+              "name": "免疫抑制剂",
+              "style": {
+                  "fill": "rgba(80,224,158,1)"
+              }
+          },
+          {
+              "id": "ib3pwHWZnq8VjpGPm",
+              "name": "EB病毒感染",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iIODdKp9z5A4MjqdK",
+              "name": "急性再障",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iRgxXjEzvSbOimLmM",
+              "name": "腺泡型软组织肉瘤",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iJ0IqdIetsTZsyn8H",
+              "name": "呼吸音粗糙",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          },
+          {
+              "id": "iJHgYd0DOCB4QRxc6",
+              "name": "高血压",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iINSVMdy9pGHzKrVB",
+              "name": "5%",
+              "style": {
+                  "fill": "rgba(61,183,42,1)"
+              }
+          },
+          {
+              "id": "itPELyHwlZ37oL7yt",
+              "name": "既往早产",
+              "style": {
+                  "fill": "rgba(158,28,219,1)"
+              }
+          },
+          {
+              "id": "ifuzCgx1vKEC4f4BP",
+              "name": "经典型",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "imBdQrfyEiQsE0tAF",
+              "name": "放射性核素治疗",
+              "style": {
+                  "fill": "rgba(184,49,118,1)"
+              }
+          },
+          {
+              "id": "icuW06J78uKKh4Kko",
+              "name": "维生素B12缺乏",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "i5xSoM49POGWqhwwL",
+              "name": "脑病",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iJ9NyYh0iRGDhC0pc",
+              "name": "肺脓疡",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "imiMEXzg2ir3SAugx",
+              "name": "磨牙症",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "iIyowLHk2V0WrDFC5",
+              "name": "慢病毒感染",
+              "style": {
+                  "fill": "rgba(53,167,176,1)"
+              }
+          },
+          {
+              "id": "igs3CgOY6ZdTuIFk8",
+              "name": "目光发直",
+              "style": {
+                  "fill": "rgba(204,132,166,1)"
+              }
+          }
+      ],
+      "links": [
+          {
+              "source": "iIfehu0FTM7JuQHHS",
+              "target": "i1i3MYqugBmv2HBa5"
+          },
+          {
+              "source": "iYRGyoUA6axTbbPR2",
+              "target": "imW4BEo5B6T8mAFTR"
+          },
+          {
+              "source": "ihXORhr1YZlDNRNi3",
+              "target": "iF25KH7SKLH9qTaul"
+          },
+          {
+              "source": "itcPoSbTQugcmjy7f",
+              "target": "itkw2yFYLcQLW4anW"
+          },
+          {
+              "source": "imiMEXzg2ir3SAugx",
+              "target": "imdCK11AVzXtarget5YVS"
+          },
+          {
+              "source": "idHsgq3Dbbo6v2I0s",
+              "target": "iOdl9N9qIeAFXSTd9"
+          },
+          {
+              "source": "iJHgYd0DOCB4QRxc6",
+              "target": "iUljQi6J0NYPyDDDc"
+          },
+          {
+              "source": "iFTTSmNSLSelzN1Fa",
+              "target": "iyDJZTxg8lFlMQNbc"
+          },
+          {
+              "source": "iRhlZMRnqj1XO8z3a",
+              "target": "ikpcsp9EO7eTBfC2a"
+          },
+          {
+              "source": "iYasL1pV4TTlVgRFm",
+              "target": "igDU2bJIULY50edrO"
+          },
+          {
+              "source": "is3AbyUYpVHo7FbG2",
+              "target": "iG9OJYiaIit0M7M2K"
+          },
+          {
+              "source": "il4dfJJWOHETPtxIl",
+              "target": "iwireCvxlZmD1PsKA"
+          },
+          {
+              "source": "icuW06J78uKKh4Kko",
+              "target": "igs3CgOY6ZdTuIFk8"
+          },
+          {
+              "source": "ib3pwHWZnq8VjpGPm",
+              "target": "i7ICj2ZYmr4U1TvDm"
+          },
+          {
+              "source": "i7nqkGlhHkIvG14Fm",
+              "target": "illDZUckFnovLgCKG"
+          },
+          {
+              "source": "iXsX5h7zIMhNOeG4u",
+              "target": "iJP5kWqtWnZJ326I4"
+          },
+          {
+              "source": "iwQfTX7hOPAdGbEJc",
+              "target": "iF1JqrQCoZZ70Yb1z"
+          },
+          {
+              "source": "ij4gve5iYgujoMJHd",
+              "target": "i5xSoM49POGWqhwwL"
+          },
+          {
+              "source": "iEkK3RTIYVO77CTLa",
+              "target": "i5xSoM49POGWqhwwL"
+          },
+          {
+              "source": "i8MqFDcro0nI7mojg",
+              "target": "i5xSoM49POGWqhwwL"
+          },
+          {
+              "source": "i0Sk0Vr9Koq3I1OVl",
+              "target": "i5xSoM49POGWqhwwL"
+          },
+          {
+              "source": "iGyj5vIw7QvT2WMqW",
+              "target": "i5xSoM49POGWqhwwL"
+          },
+          {
+              "source": "i9rD0JgNu9dKlWb9k",
+              "target": "i5xSoM49POGWqhwwL"
+          },
+          {
+              "source": "iPq7lE6BV4q8RUbld",
+              "target": "i5xSoM49POGWqhwwL"
+          },
+          {
+              "source": "iDcptargetTus4OsvXDvS",
+              "target": "i5xSoM49POGWqhwwL"
+          },
+          {
+              "source": "iRzkds9P56XyFUQ4L",
+              "target": "i5xSoM49POGWqhwwL"
+          },
+          {
+              "source": "iSvkjJOEm0JfYYDeu",
+              "target": "iSsDyDVSkQA1WDo13"
+          },
+          {
+              "source": "iUkRX3HAWW9sXfxhn",
+              "target": "iUGcywItsLPVjljwB"
+          },
+          {
+              "source": "ilfFZRM4JVSbsMaIc",
+              "target": "ipJnIyZId4zIenLpx"
+          },
+          {
+              "source": "i0Sk0Vr9Koq3I1OVl",
+              "target": "iPkJOnJCBJ8tQQgH8"
+          },
+          {
+              "source": "iMVVxLwqZH9ASbO6f",
+              "target": "iVibN7AncgYGAzf54"
+          },
+          {
+              "source": "iJ9NyYh0iRGDhC0pc",
+              "target": "iVibN7AncgYGAzf54"
+          },
+          {
+              "source": "ihXORhr1YZlDNRNi3",
+              "target": "iKeq8pYbRSStSZ7gW"
+          },
+          {
+              "source": "iOKj7nkrvng60qpEm",
+              "target": "iKq67vl8s8DBCqlMp"
+          },
+          {
+              "source": "iBL7DW3oPQHmui7EQ",
+              "target": "iQvmYxVJElBF4Or3w"
+          },
+          {
+              "source": "iXffLVR2nMJqfSK1U",
+              "target": "iP3nYK1yjnaU1QdtR"
+          },
+          {
+              "source": "iJtZvKmJdkiocVmCB",
+              "target": "iElMlw6xKihdqKDwY"
+          },
+          {
+              "source": "iyVEP444LKRYDMVPA",
+              "target": "iElMlw6xKihdqKDwY"
+          },
+          {
+              "source": "iyXKYpbTEE7KwV1im",
+              "target": "iElMlw6xKihdqKDwY"
+          },
+          {
+              "source": "iBT1fiIVN41XUnMkB",
+              "target": "iElMlw6xKihdqKDwY"
+          },
+          {
+              "source": "iTe1Ci95Zt3Ihn1d5",
+              "target": "iElMlw6xKihdqKDwY"
+          },
+          {
+              "source": "iODXNifWrAJhAcZP9",
+              "target": "iElMlw6xKihdqKDwY"
+          },
+          {
+              "source": "iswcqO5LuSftWx1m6",
+              "target": "iElMlw6xKihdqKDwY"
+          },
+          {
+              "source": "ivHIqhaC166t78Bck",
+              "target": "iElMlw6xKihdqKDwY"
+          },
+          {
+              "source": "ifLpnxrV2TKWW6arW",
+              "target": "iElMlw6xKihdqKDwY"
+          },
+          {
+              "source": "ilsOrAXuWyr5ZOY0I",
+              "target": "iElMlw6xKihdqKDwY"
+          },
+          {
+              "source": "iHgSg3FbrFJWNNu4V",
+              "target": "ifqyq9KmjegK8juDU"
+          },
+          {
+              "source": "i9b3NIuo3NEZo7VrX",
+              "target": "ifqyq9KmjegK8juDU"
+          },
+          {
+              "source": "iIfehu0FTM7JuQHHS",
+              "target": "iPTvFkKLwyNxw02kW"
+          },
+          {
+              "source": "iFWW8U8M8tClWAdah",
+              "target": "izizZ65L5IsiHulqf"
+          },
+          {
+              "source": "iFAi1HyBrahzbENWB",
+              "target": "imBdQrfyEiQsE0tAF"
+          },
+          {
+              "source": "ipyorvxIlWbZRXm63",
+              "target": "iGvTDyNuvmzYEASu3"
+          },
+          {
+              "source": "iMKyF50DdRKzr1UKm",
+              "target": "iGvTDyNuvmzYEASu3"
+          },
+          {
+              "source": "iBro9PdQODgL39w7p",
+              "target": "il3rxFRkZIv5e6hoz"
+          },
+          {
+              "source": "iPAODcwHuAKyKHKLR",
+              "target": "iIA18AZSeP7wieXst"
+          },
+          {
+              "source": "ij6targettJ4xLNAem5Be",
+              "target": "i0ZEGXlkEvHNBRf7Q"
+          },
+          {
+              "source": "iIQNTUaY9hvHGAVcq",
+              "target": "iFhyi904elKmcg4sO"
+          },
+          {
+              "source": "iRLHmyX4eDijkDl7G",
+              "target": "iRbY78DnMJUIVaCnu"
+          },
+          {
+              "source": "i1fb2BP900rSLyGv9",
+              "target": "in1kV4KF9vJ8EzYX1"
+          },
+          {
+              "source": "itlOFZid368phOa4e",
+              "target": "icNp9uckPZb8ZlpZC"
+          },
+          {
+              "source": "iNVF2Jx60HH7NTT5l",
+              "target": "iWQ602qT9yYBXx1Oe"
+          },
+          {
+              "source": "isYfv5XDIDxe6CHPR",
+              "target": "ij9gMXnZmukvFM1E1"
+          },
+          {
+              "source": "imqGgedvkLFXG8zb9",
+              "target": "ij9gMXnZmukvFM1E1"
+          },
+          {
+              "source": "iuOqPbn0PQdERH6ln",
+              "target": "i74UxO1kxYkYnj8e0"
+          },
+          {
+              "source": "i31bAbZ1ybvmJGsYA",
+              "target": "iQ9ChrSptargetwjtjNSy"
+          },
+          {
+              "source": "iavC8KZ50oRKtBCxW",
+              "target": "i4C7YTz59rKxeOLFW"
+          },
+          {
+              "source": "ikpcsp9EO7eTBfC2a",
+              "target": "ikuoHAGES0newP0fl"
+          },
+          {
+              "source": "iSvkjJOEm0JfYYDeu",
+              "target": "ih0AbiQRPvBbsyVlb"
+          },
+          {
+              "source": "iFrT8rUUsrt0Mb3Hj",
+              "target": "ih0AbiQRPvBbsyVlb"
+          },
+          {
+              "source": "izJogVLesABTuLD0h",
+              "target": "i2eFeitlYjkk2sElE"
+          },
+          {
+              "source": "iL6NvP694583Gl219",
+              "target": "iP3FAt7R5QC23KKCI"
+          },
+          {
+              "source": "izEzyI2hRbNOwcIoY",
+              "target": "imJBpEXV3rFb08Sdj"
+          },
+          {
+              "source": "i3JMLvUgejrEeSftF",
+              "target": "iGWWAVQookWZJdzef"
+          },
+          {
+              "source": "iIQNTUaY9hvHGAVcq",
+              "target": "iJ3zb0v8aL9ZuGaXA"
+          },
+          {
+              "source": "i5kmZTKxPYzyZMSSP",
+              "target": "ifvm3yZcnwX7oMhgu"
+          },
+          {
+              "source": "iPkWEGpjtdeQ45SLa",
+              "target": "iR3rXaW842ygxasez"
+          },
+          {
+              "source": "isI5mZlR3W5ot3nhv",
+              "target": "ixXWRvxDaIsVSyxoD"
+          },
+          {
+              "source": "ikXCTUiL1zVSufttZ",
+              "target": "ioO4Wf5CeXsjkhtET"
+          },
+          {
+              "source": "i4jz1j3H8Uy5jeoDO",
+              "target": "i3u6BYORfjtrKobcj"
+          },
+          {
+              "source": "iuvAe6iBzrAj9mTgb",
+              "target": "inPSVnDwZb7hcxBVS"
+          },
+          {
+              "source": "iL7Ui3l7u2JdUwlBa",
+              "target": "inPSVnDwZb7hcxBVS"
+          },
+          {
+              "source": "iQjPrMPeK5SHZEwKl",
+              "target": "inPSVnDwZb7hcxBVS"
+          },
+          {
+              "source": "izIdxdf8wVARGwg7z",
+              "target": "inPSVnDwZb7hcxBVS"
+          },
+          {
+              "source": "i1Ibo5DPlkx6TmJgr",
+              "target": "inPSVnDwZb7hcxBVS"
+          },
+          {
+              "source": "iF02IizwfkEfFvfwM",
+              "target": "iZ9OLJqusPpIplLXh"
+          },
+          {
+              "source": "iIODdKp9z5A4MjqdK",
+              "target": "ihi4xY8l5oSfuW0DI"
+          },
+          {
+              "source": "iaLzRaUNifhS3pM3P",
+              "target": "iWsMPLVfVhEUE9yhX"
+          },
+          {
+              "source": "i7LI7Ejz2fqTUaL8f",
+              "target": "iNtf3vF44rq4EDAaV"
+          },
+          {
+              "source": "izJogVLesABTuLD0h",
+              "target": "izUEDM03FhjUQBmde"
+          },
+          {
+              "source": "iRgxXjEzvSbOimLmM",
+              "target": "iNa5xv7ERiSW348j8"
+          },
+          {
+              "source": "iuEZ8YFraPhn97vgO",
+              "target": "iaIi0LV5n1OxR7Lc3"
+          },
+          {
+              "source": "iUYyrsWQmuQs3FgAv",
+              "target": "iq5h2PohE5J9TlIPF"
+          },
+          {
+              "source": "iuOqPbn0PQdERH6ln",
+              "target": "iq5h2PohE5J9TlIPF"
+          },
+          {
+              "source": "iVjbJTuh7Mg6IlrrD",
+              "target": "itHpw5t11LV6FNe7j"
+          },
+          {
+              "source": "iYRGyoUA6axTbbPR2",
+              "target": "i9EWXAD5VPVzfbuB0"
+          },
+          {
+              "source": "iNVF2Jx60HH7NTT5l",
+              "target": "ipmXiAxEaUo3Y4sFU"
+          },
+          {
+              "source": "i2WeMi2KA0hXSIhmi",
+              "target": "iiilGpWkmPMOaEYYM"
+          },
+          {
+              "source": "ijrFpBp7G2IiwnJ4J",
+              "target": "iTDV5SvBRoQAqwExl"
+          },
+          {
+              "source": "iTBJEFk7Oj8W0Nzsd",
+              "target": "i46O0vAZNllIJREwX"
+          },
+          {
+              "source": "ijrFpBp7G2IiwnJ4J",
+              "target": "ijvONJk3KM8nZCvYR"
+          },
+          {
+              "source": "iuHkyZ3vovwaGUkBL",
+              "target": "irABP9MQKBRZY8WPo"
+          },
+          {
+              "source": "i1qlhWQ1ihoCy8Ulu",
+              "target": "iWtX9Q3LkByuCsDPE"
+          },
+          {
+              "source": "iyyjXRCVeka30wHqB",
+              "target": "i1XnLZhtahGNLlhcw"
+          },
+          {
+              "source": "iJEp1lLP6F7ic4xhb",
+              "target": "iPCq7EitSb47GQAXi"
+          },
+          {
+              "source": "ijgU5kXzBpPFL8kGB",
+              "target": "iVRQ6iGwZFGQQvVtX"
+          },
+          {
+              "source": "iqGgcMXFws8iJaZ6H",
+              "target": "ij0wpZQcXgMcTbbzH"
+          },
+          {
+              "source": "ijtA7HlUmhciB2JVV",
+              "target": "ixA94ipR92iyjNtfX"
+          },
+          {
+              "source": "iYGmwtargetOL58M7kJlc",
+              "target": "i5gWl5T3eEhVIfqdR"
+          },
+          {
+              "source": "i2VF7JB62dWEzFYd5",
+              "target": "idCGeSk3ZRBEGM26I"
+          },
+          {
+              "source": "ijDH0NWRPlouCtBXL",
+              "target": "iLzKyYNgBXF1Sk9Kp"
+          },
+          {
+              "source": "i5cMFbd7QCK1Vg4ST",
+              "target": "iw1ApkrmjHsKrWGf7"
+          },
+          {
+              "source": "imjqZDpZFW1y2Pelw",
+              "target": "iJ0IqdIetsTZsyn8H"
+          },
+          {
+              "source": "iHkwHEfg08ty9zlh7",
+              "target": "iBGHFNwXqXAR8D88b"
+          },
+          {
+              "source": "i5KAvPvO9wWc5JIXg",
+              "target": "igyQvFRtuoBqGtH4X"
+          },
+          {
+              "source": "iIyowLHk2V0WrDFC5",
+              "target": "ipCgHCjzbeCc8ivgu"
+          },
+          {
+              "source": "iTSNhgHMaCW5UHH3B",
+              "target": "iVCwpOA7ZBYoxJREW"
+          },
+          {
+              "source": "iIQugcMdPlvC74h6z",
+              "target": "itkCUaYObFdbILsX5"
+          },
+          {
+              "source": "ixJ1HIgWlH3KcGQLt",
+              "target": "i1f1WH7homlYOdxFE"
+          },
+          {
+              "source": "iKm4lq4NPhmWo9DNR",
+              "target": "igVVloEFQavtHFlor"
+          },
+          {
+              "source": "ibdjfAQlYT31BDRG2",
+              "target": "iYz0t8ZwsWqhX66jc"
+          },
+          {
+              "source": "i6mWGY59qhRTWIY2x",
+              "target": "iLco8RNQvkU89Uj78"
+          },
+          {
+              "source": "iHXx6XedjFliAgvyu",
+              "target": "ir3VXy8mQoMvt30uE"
+          },
+          {
+              "source": "ixy1WCDGK5Y2yPHeR",
+              "target": "iyn7KznrJc5YF5Bvq"
+          },
+          {
+              "source": "iYRGyoUA6axTbbPR2",
+              "target": "iMT6dOhvIiYv4oLf1"
+          },
+          {
+              "source": "iShSr0oQenc6tSiDz",
+              "target": "iINSVMdy9pGHzKrVB"
+          },
+          {
+              "source": "iVABEQgxUtkR0wwTD",
+              "target": "iINSVMdy9pGHzKrVB"
+          },
+          {
+              "source": "ioxoeFmfHP2xntpMu",
+              "target": "iINSVMdy9pGHzKrVB"
+          },
+          {
+              "source": "inhP74pX6KkfgaboS",
+              "target": "iINSVMdy9pGHzKrVB"
+          },
+          {
+              "source": "iKsRDpYkAU9E264uP",
+              "target": "iINSVMdy9pGHzKrVB"
+          },
+          {
+              "source": "inhP74pX6KkfgaboS",
+              "target": "i5hHC6lQ1IHBgoidY"
+          },
+          {
+              "source": "iMdSofiaA6SFGFmMH",
+              "target": "iuFy0MHs9XQSLSm9N"
+          },
+          {
+              "source": "iqgMp71v7PJ5mxwa8",
+              "target": "iuFy0MHs9XQSLSm9N"
+          },
+          {
+              "source": "iV95Hr4yIXumLy56c",
+              "target": "iuFy0MHs9XQSLSm9N"
+          },
+          {
+              "source": "i1OczJKZ12fhnyE7M",
+              "target": "iuFy0MHs9XQSLSm9N"
+          },
+          {
+              "source": "ipZePs2jU4DT31A35",
+              "target": "iRrHmDA5qcQMWGOel"
+          },
+          {
+              "source": "iRzypp3JS7RvYN3Hz",
+              "target": "iRrHmDA5qcQMWGOel"
+          },
+          {
+              "source": "iYlR0G7kxvdpVKCxU",
+              "target": "iagFcdWUZIrJgGoJ7"
+          },
+          {
+              "source": "iwMOteX0targetTj7waRA",
+              "target": "imUfSOe5Oz29gvHFm"
+          },
+          {
+              "source": "iIksBoSNjG77ZoA9X",
+              "target": "i6yc0YUY53EiuQfFE"
+          },
+          {
+              "source": "iHgSg3FbrFJWNNu4V",
+              "target": "i03oguRZaBqQh9rB3"
+          },
+          {
+              "source": "iNNubO8csleHOYbDc",
+              "target": "i6MIpWKvVQ0rtcFp0"
+          },
+          {
+              "source": "i1p2dqQIl5Ur5lqGl",
+              "target": "i83Rgvdot4lSgG5cN"
+          },
+          {
+              "source": "isDbZ4d8ABydk6EKi",
+              "target": "ifqdMf3YGwQQeJ51Q"
+          },
+          {
+              "source": "ixcfDmFnZQRDkt6PU",
+              "target": "ipC9vPaAPivlpHBuM"
+          },
+          {
+              "source": "idnln8bIqLBdM2rt9",
+              "target": "i3bY8Cbga6v4Do2RU"
+          },
+          {
+              "source": "iGBQdMNscaoTKlh9x",
+              "target": "iYB6Wg4tNb6zm4KWS"
+          },
+          {
+              "source": "iMHg7iUB00o4gyYNY",
+              "target": "iYB6Wg4tNb6zm4KWS"
+          },
+          {
+              "source": "ipZePs2jU4DT31A35",
+              "target": "itPELyHwlZ37oL7yt"
+          },
+          {
+              "source": "iIQNTUaY9hvHGAVcq",
+              "target": "iBiDYXsaEPPTn3nRR"
+          },
+          {
+              "source": "ihveegVSIQkd9kCCO",
+              "target": "iOXM8O3xqfEKNDiQJ"
+          },
+          {
+              "source": "iPlkZkNGBE5Q5aayD",
+              "target": "i86PRGIx6O4JWypZP"
+          },
+          {
+              "source": "iAwtP6TGTRdwPOhuE",
+              "target": "iG4R0GQh9JfIKN97e"
+          },
+          {
+              "source": "iXsX5h7zIMhNOeG4u",
+              "target": "iBUChkbMt2J8c0XuJ"
+          },
+          {
+              "source": "iK4oD2r4z5FlHDXVe",
+              "target": "iE35bIe237CuJKZbT"
+          },
+          {
+              "source": "iRGqL2M1bHNPjJrH0",
+              "target": "iOjTxwmjnkcrLmnDJ"
+          },
+          {
+              "source": "ih782x0sx3aalYIer",
+              "target": "i3cnEQ1ZZfQv1KyEH"
+          },
+          {
+              "source": "i5w1zsVJiCMCYu8c6",
+              "target": "i3cnEQ1ZZfQv1KyEH"
+          },
+          {
+              "source": "i5cznnYD41B0mTF0D",
+              "target": "i3cnEQ1ZZfQv1KyEH"
+          },
+          {
+              "source": "iZi6AT6uyvwAILmC9",
+              "target": "i3cnEQ1ZZfQv1KyEH"
+          },
+          {
+              "source": "imqGgedvkLFXG8zb9",
+              "target": "i3cnEQ1ZZfQv1KyEH"
+          },
+          {
+              "source": "iLLKy5wQOMdBSND2X",
+              "target": "iawNAlqu5d8v6Nq7i"
+          },
+          {
+              "source": "ixIjBLREDV53aanv2",
+              "target": "iF581Y2xsrGdfV6oJ"
+          },
+          {
+              "source": "iEYYJE3d2soMw9G4p",
+              "target": "ikKkMXrt1hh9sShHt"
+          },
+          {
+              "source": "iUOO5YHbADXLHRVTh",
+              "target": "iMlFXFHFu17f8vNF9"
+          },
+          {
+              "source": "i6Ir9BP9FsFJs53WE",
+              "target": "iMlFXFHFu17f8vNF9"
+          },
+          {
+              "source": "iqbzCdMpOEgE95Rvk",
+              "target": "iMlFXFHFu17f8vNF9"
+          },
+          {
+              "source": "idjoYsgFfutKryESE",
+              "target": "iMlFXFHFu17f8vNF9"
+          },
+          {
+              "source": "i3IxbAcNjdP1WKoY1",
+              "target": "iMlFXFHFu17f8vNF9"
+          },
+          {
+              "source": "iYasL1pV4TTlVgRFm",
+              "target": "iMlFXFHFu17f8vNF9"
+          },
+          {
+              "source": "iwDS89kunh7M7EiLw",
+              "target": "iMlFXFHFu17f8vNF9"
+          },
+          {
+              "source": "ifixEk7ioYLfTek0j",
+              "target": "iMlFXFHFu17f8vNF9"
+          },
+          {
+              "source": "iMzS0cuFQ83B5XALB",
+              "target": "iMlFXFHFu17f8vNF9"
+          },
+          {
+              "source": "iZdHap8UKLRLoGX61",
+              "target": "iMlFXFHFu17f8vNF9"
+          },
+          {
+              "source": "i9rD0JgNu9dKlWb9k",
+              "target": "iMlFXFHFu17f8vNF9"
+          },
+          {
+              "source": "infRGgIJ8opzFkdqE",
+              "target": "iMlFXFHFu17f8vNF9"
+          },
+          {
+              "source": "io26IFrdJ0W82PuPr",
+              "target": "ix2EyqiMlE9EJ9qha"
+          },
+          {
+              "source": "iKUGwf4sY82rM8xdO",
+              "target": "iXLM5LtY2Bm1bTw5o"
+          },
+          {
+              "source": "ifuzCgx1vKEC4f4BP",
+              "target": "i6PugPS6tGZa1s4Zs"
+          },
+          {
+              "source": "iEK4yWhbssYPeE0pF",
+              "target": "iPR32c3WrTkqBfBTR"
+          },
+          {
+              "source": "ixLWaVHxewaXtPBPD",
+              "target": "iszqGhbrWLEokgUZL"
+          },
+          {
+              "source": "i6KuiNffi3DiqiJB9",
+              "target": "iinI2fg2gfAUXdf9X"
+          },
+          {
+              "source": "ixy7Q5tbGo71xJlw2",
+              "target": "iWdovjudepLjtbC6C"
+          },
+          {
+              "source": "i9zUkcf1RwRizBGTB",
+              "target": "ikgBWZQ8TrycDQ1He"
+          },
+          {
+              "source": "iTBdNg9kHV3gpwxCE",
+              "target": "iMZAvL3XnTwjHMADL"
+          },
+          {
+              "source": "i2WeMi2KA0hXSIhmi",
+              "target": "iUohsASQhOAli4hbl"
+          },
+          {
+              "source": "iwNBY0PLg0xSITxox",
+              "target": "i51gmTfskN14hstargetD"
+          },
+          {
+              "source": "izoTIvlaujP6eace0",
+              "target": "iobyLMOtZ5C4tLfDy"
+          },
+          {
+              "source": "iAQ9sT2poa7Vj1zV4",
+              "target": "ipHFddaKcRXmHOHrp"
+          },
+          {
+              "source": "i6fTSUsqErNWbao4X",
+              "target": "ipHFddaKcRXmHOHrp"
+          },
+          {
+              "source": "iXCcogRvCuH4wdKBt",
+              "target": "ibRAim0ZACMw1HBiw"
+          },
+          {
+              "source": "inZ9jpR16mTiEY1AM",
+              "target": "iFzDsOGSn8nSGO3PV"
+          },
+          {
+              "source": "iszQFi7a1WPzGU3MU",
+              "target": "iFzDsOGSn8nSGO3PV"
+          },
+          {
+              "source": "iaL5NUSsx1lKrgQ5o",
+              "target": "iFzDsOGSn8nSGO3PV"
+          },
+          {
+              "source": "i7NZWm7s3Vodwq77C",
+              "target": "iUuz2JXgxOZqvPFLm"
+          },
+          {
+              "source": "iVi2G9YgHlWt69Ilv",
+              "target": "ipWkEua4xwpW5ZP72"
+          },
+          {
+              "source": "iVMIXSfw2KxiVaSk7",
+              "target": "ipWkEua4xwpW5ZP72"
+          },
+          {
+              "source": "iYhqIeBehGGIwFfAo",
+              "target": "iVMwvNCTgbutvRgRw"
+          },
+          {
+              "source": "iVLaeuL4UCnRD2v9X",
+              "target": "i6jpIYRzjHWGaZg2u"
+          },
+          {
+              "source": "ifjN7g3Ig5AhFKIzX",
+              "target": "ii1Jh7sxSJ0uJWDjo"
+          },
+          {
+              "source": "irbsghuPIBKY1Gv08",
+              "target": "ixIiGE48glolemJhB"
+          }
+      ]
+  }
+  graph.changeData(data)
+
+  graph.on('node:click', (e) => {
+      console.log('out', e);
+  });
+
+  graph.on('link:click', (e, d) => {
+      console.log('ILink:click out', e, d);
+  });
+
+  graph.on('canvas:dblclick', (e) => {
+      console.log('svg:dblclick', e);
+  });
+  graph.on('createEdge:end', ({ startNode, endNode }) => {
+      data.links.push({
+          id: `${startNode.id}-${endNode.id}`,
+          name: `${startNode.name}-${endNode.name}`,
+          source: startNode.id,
+          target: endNode.id
+      });
+      graph.changeData(data);
+  });
+
+  let modeBtn = document.querySelector('#toggle')
+  modeBtn.addEventListener('click',() => {
+      if(graph.currentMode === 'default') {
+          graph.setMode('look')
+      }  else {
+          graph.setMode('default')
+      }
+      modeBtn.innerText = `切换模式 当前模式:${graph.currentMode}`
+  })
+</script>
+</body>
+</html>

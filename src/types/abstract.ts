@@ -45,6 +45,7 @@ export abstract class BaseShape {
 
 // 行为的抽象类
 export abstract class BaseBehavior {
+  private eventHandlers: Record<string, Function> = {};
   constructor(protected graph: Graph) {}
 
   getDefaultCfg() {
@@ -70,15 +71,16 @@ export abstract class BaseBehavior {
     let _self = this;
     let events = this.getEvents();
     for (let i in events) {
-      this.graph.on(i, (_self as any)[events[i]].bind(_self));
+      const handler = (_self as any)[events[i]].bind(_self);
+      this.eventHandlers[i] = handler;
+      this.graph.on(i, handler);
     }
   }
 
   unbind() {
-    let _self = this;
     let events = this.getEvents();
     for (let i in events) {
-      this.graph.off(i, (_self as any)[events[i]]);
+      this.graph.off(i, this.eventHandlers[i]);
     }
   }
 }

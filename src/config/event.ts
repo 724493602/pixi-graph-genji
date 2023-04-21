@@ -12,5 +12,5 @@ export enum Event {
   ICanvasClick = 'canvas:click',
   ICanvasDoubleClick = 'canvas:dblclick',
 
-  IDrawLinkEnd = 'drawLink:end'
+  IDrawLinkEnd = 'createEdge:end'
 }
