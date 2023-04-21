@@ -1,0 +1,47 @@
+{
+  "name": "pixi-graph-genji",
+  "version": "0.0.1",
+  "description": "一个基于pixi.js 实现关系图谱的库",
+  "main": "dist/pixi-graph-genji.js",
+  "module": "dist/pixi-graph-genji.es.js",
+  "types": "dist/types/src/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development rollup -c ./rollup.config.js --watch",
+    "build:dev": "cross-env NODE_ENV=development rollup -c ./rollup.config.js",
+    "build": "cross-env NODE_ENV=production rollup -c ./rollup.config.js",
+    "format": "prettier --write 'packages/**/*.{js,ts,md,json}'"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.6",
+    "@babel/preset-env": "^7.18.6",
+    "@rollup/plugin-commonjs": "^22.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@types/d3-force": "^3.0.3",
+    "@types/lodash-es": "^4.17.6",
+    "@typescript-eslint/eslint-plugin": "^5.28.0",
+    "@typescript-eslint/parser": "^5.28.0",
+    "cross-env": "^7.0.3",
+    "prettier": "^2.7.1",
+    "rollup": "^2.75.6",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-node-polyfills": "^0.2.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.32.1",
+    "tslib": "^2.4.0",
+    "typescript": "^4.7.4"
+  },
+  "keywords": [],
+  "dependencies": {
+    "@pixi/graphics-smooth": "^1.1.0",
+    "d3-force": "^3.0.0",
+    "gl-matrix": "^3.4.3",
+    "lodash-es": "^4.17.21",
+    "pixi-viewport": "^5.0.1",
+    "pixi.js": "^7.2.3"
+  }
+}

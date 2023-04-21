@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" type="module">
+  <head>
+    <base href="." />
+    <meta charset="UTF-8" />
+  </head>
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+    }
+  </style>
+  <body>
+
+    <div style="width: 100vw; height: 100vh">
+      <div id="graph" style="width: 100vw; height: 100vh"></div>
+    </div>
+    <script type="module">
+      import json  from "./json.js";
+      import { Graph } from '../dist/pixi-graph-genji.es.js';
+      const config = {
+        container: 'graph',
+        fps: true,
+        // plugins: [new Contextmenu({
+        //   offset: {x: 1, y: 2},
+        //   menu: [{id:1, name: '菜单1'},{id:2, name: '菜单2'}],
+        //   handleMenuClick(target, item) {
+        //     console.log(target)
+        //     console.log(item)
+        //   }
+        // })],
+        modes: {
+          default: ['drag-node', 'drag-canvas', 'zoom-canvas', 'create-edge'],
+          edit: ['drag-node', 'draw-link']
+        },
+      };
+      const graph = new Graph(config);
+      let data = json.data8()
+
+      let nodes = data.classes.map(n => ({...n, style: {
+        fill: n.rgb
+        }}))
+      let links = data.edges.map(n => ({...n,  source: n.fromClass, target: n.toClass}))
+      // Initialize nodes and edges
+      let reData = { nodes, links }
+      graph.changeData(JSON.parse(JSON.stringify(reData)));
+
+      graph.on('node:click', (e) => {
+        console.log('out', e);
+      });
+      graph.on('link:click', (e, d) => {
+        console.log('ILink:click out', e, d);
+      });
+      graph.on('canvas:dblclick', (e) => {
+        console.log('svg:doubleclick', e);
+      });
+      graph.on('drawLink:end', ({ startNode, endNode }) => {
+        data.edges.push({
+          id: `${startNode.id}-${endNode.id}`,
+          name: `${startNode.name}-${endNode.name}`,
+          fromClass: startNode.id,
+          toClass: endNode.id
+        });
+        graph.changeData({ nodes: data.classes, links: data.edges.map(n => ({...n,  source: n.fromClass, target: n.toClass})) });
+      });
+
+      setTimeout(() => {
+      //   graph.updateLayout( {
+      //     type: 'force',
+      //     xForce:{
+      //       enabled:true,
+      //       xFn:(d) =>{
+      //         return d.hasOwnProperty('level') ? -200 : -(3 -1)*200 +200
+      //       },
+      //       strengthFn: (d) => {
+      //         return d.level ? 0 : .05
+      //       },
+      //     },
+      //     yForce:{
+      //       enabled:true,
+      //       strengthFn: (d) => {
+      //         return d.hasOwnProperty('level') ? 0 : .05
+      //       },
+      //       yFn: (d) => {
+      //         return d.hasOwnProperty('level') ? 0 : (3 -1)*200 +200
+      //       }
+      //     },
+      //     link:{
+      //       strengthFn: (d) => {
+      //         return d.source.hasOwnProperty('level') || d.target
+      //                 .hasOwnProperty('level') ? 0 : 0.8
+      //       }
+      //     },
+      //     charge: {
+      //       enabled: true,
+      //       strengthFn: (d) => {
+      //         return d.hasOwnProperty('level') ? -10 : -400
+      //       },
+      //       theta: 1
+      //     },
+      //     radialForce: {
+      //       border: true,
+      //       x: 0,
+      //       y:0,
+      //       enabled: true,
+      //       rFn: (d) => {
+      //         if(d.hasOwnProperty('level')){
+      //           return (d.level - 1) * 200
+      //         } else {
+      //           return 0
+      //         }
+      //       },
+      //       strengthFn: (d) => {
+      //         if(d.hasOwnProperty('level')) {
+      //           return 1
+      //         } else {
+      //           return 0
+      //         }
+      //       }
+      //     },
+      //   });
+      //   graph.setMode('edit')
+      }, 3000);
+
+      let btn = document.querySelector('button')
+      btn.addEventListener('click', (e) =>{
+        graph.fitView()
+      })
+
+    </script>
+  </body>
+</html>

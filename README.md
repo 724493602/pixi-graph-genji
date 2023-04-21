@@ -1,2 +1,3 @@
 # pixi-graph-genji
-基于pixi.js 实现的关系图谱库
+
+## 一个基于pixi.js 实现关系图谱的库
