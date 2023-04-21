@@ -173,6 +173,18 @@ export default class CanvasEvents {
         })
       );
     });
+    link.on('mouseenter', (e) =>
+      this.emitDataOfLink(link as Container, 'link:mouseenter', e)
+    );
+    link.on('mousemove', (e) =>
+      this.emitDataOfLink(link as Container, 'link:mousemove', e)
+    );
+    link.on('mouseout', (e) =>
+      this.emitDataOfLink(link as Container, 'link:mouseout', e)
+    );
+    link.on('mouseup', (e) =>
+      this.emitDataOfLink(link as Container, 'link:mouseup', e)
+    );
   }
   // 通过节点Container对象获取节点Data
   getNodeDataByContainer(c: Container) {
@@ -191,6 +203,18 @@ export default class CanvasEvents {
         _data_: this.getNodeDataByContainer(node),
         point,
         shape: node
+      })
+    );
+  }
+
+  emitDataOfLink(link: Container, eventId: string, e: any) {
+    let point = this.canvas.viewport.toWorld(e.data.global);
+    this.graph.emit(
+      eventId,
+      Object.assign(e, {
+        _data_: this.getLinkDataByContainer(link),
+        point,
+        shape: link
       })
     );
   }
