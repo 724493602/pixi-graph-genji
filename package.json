@@ -1,12 +1,21 @@
 {
   "name": "pixi-graph-genji",
-  "version": "0.0.1",
-  "description": "一个基于pixi.js 实现关系图谱的库",
+  "version": "0.0.2",
+  "description": "A pixi.js based on the realization of the relationship graph library",
+  "keywords": [
+    "pixi",
+    "graph",
+    "webgl"
+  ],
+  "license": "MIT",
+  "author": "visale <724493602@qq.com>",
+  "repository": "github:724493602/pixi-graph-genji",
   "main": "dist/pixi-graph-genji.js",
   "module": "dist/pixi-graph-genji.es.js",
   "types": "dist/types/src/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "examples"
   ],
   "scripts": {
     "dev": "cross-env NODE_ENV=development rollup -c ./rollup.config.js --watch",
@@ -35,7 +44,6 @@
     "tslib": "^2.4.0",
     "typescript": "^4.7.4"
   },
-  "keywords": [],
   "dependencies": {
     "@pixi/graphics-smooth": "^1.1.0",
     "d3-force": "^3.0.0",

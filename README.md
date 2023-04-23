@@ -1,6 +1,11 @@
 # pixi-graph-genji
 
 ## 一个基于pixi.js 实现关系图谱的库
+-基于webgl，gpu渲染，提供更流程的体验
+![demo](https://724493602.github.io/imgs/img2.png)
+
+- 处理多边展示
+![多边关系](https://724493602.github.io/imgs/img1.png)
 
 > 基础使用
 ```ts
