@@ -53,6 +53,8 @@ export default class CanvasRender extends ElementRender {
 
   initViewport() {
     this.viewport = new Viewport({
+      screenWidth: this.width,
+      screenHeight: this.height,
       worldWidth: this.width,
       worldHeight: this.height,
       events: this.app.renderer.events
