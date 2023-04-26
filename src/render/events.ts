@@ -30,6 +30,8 @@ export default class CanvasEvents {
   }
 
   initEvents() {
+    this.preventContainerWheel();
+
     this.canvas.app.stage.on('mousemove', (e) =>
       this.graph.emit('canvas:mousemove', e)
     );
@@ -53,6 +55,13 @@ export default class CanvasEvents {
     });
   }
 
+  // 阻止滚动链传递，防止在canvas中滚动时，文档也一起滚动
+  preventContainerWheel() {
+    let container = document.getElementById(this.graph.cfg.container);
+    container!.addEventListener('wheel', function (event) {
+      event.preventDefault();
+    });
+  }
   // 画布单击和双击
   canvasClick() {
     let _self = this;

@@ -66,8 +66,8 @@ export interface ILink extends SimulationLinkDatum<INode | INode> {
 export type IModel = { nodes: INode[]; links: ILink[] };
 
 export type IPickModel = {
-  nodes: (Pick<INode, 'id' | 'x' | 'y'> & KV)[];
-  links: (Pick<ILink, 'id' | 'source' | 'target'> & KV)[];
+  nodes: (Pick<INode, 'id'> & KV)[];
+  links: (Pick<ILink, 'source' | 'target'> & KV)[];
 };
 
 export interface IPos {

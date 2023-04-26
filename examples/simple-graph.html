@@ -14,7 +14,7 @@
   <body>
 
     <div style="width: 100vw; height: 100vh">
-      <div id="graph" style="width: 100vw; height: 300px;border: 1px solid red"></div>
+      <div id="graph" style="width: 100vw; height: 300px;border: 1px solid red;margin-top: 500px;overscroll-behavior: none;"></div>
     </div>
     <script type="module">
       import json  from "./json.js";
@@ -68,7 +68,7 @@
       graph.on('canvas:dblclick', (e) => {
         console.log('svg:doubleclick', e);
       });
-      graph.on('drawLink:end', ({ startNode, endNode }) => {
+      graph.on('createEdge:end', ({ startNode, endNode }) => {
         data.edges.push({
           id: `${startNode.id}-${endNode.id}`,
           name: `${startNode.name}-${endNode.name}`,
@@ -136,11 +136,10 @@
       //   graph.setMode('edit')
       }, 3000);
 
-      let btn = document.querySelector('button')
-      btn.addEventListener('click', (e) =>{
-        graph.fitView()
-      })
-
+      // let btn = document.querySelector('button')
+      // btn.addEventListener('click', (e) =>{
+      //   graph.fitView()
+      // })
     </script>
   </body>
 </html>
