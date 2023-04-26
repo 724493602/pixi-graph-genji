@@ -45,7 +45,8 @@ export class Graph extends EventEmitter {
 
   // 修改数据 不传参数就是重新渲染
   public changeData(): void;
-  public changeData(data?: IPickModel) {
+  public changeData(data: IPickModel): void;
+  public changeData(data?: IPickModel): void {
     if (data === undefined) {
       this.layoutController.reRender();
     } else {

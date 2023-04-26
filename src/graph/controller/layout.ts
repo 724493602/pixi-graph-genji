@@ -63,7 +63,7 @@ export default class LayoutController {
   changeData(data: IPickModel) {
     // 预处理数据,保持原来的坐标和加速度
     let nData = this.holdNodesPosition(data);
-    this.graph.data = nData as IModel;
+    this.graph.data = nData as unknown as IModel;
     // 给每条边分类型和ID
     processParallelEdges(this.graph.data.links);
     // 渲染节点
