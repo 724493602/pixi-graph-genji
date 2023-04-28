@@ -13,8 +13,14 @@
   </style>
   <body>
 
+  <div style="position: absolute;left: 0;top: 0">
+    <button id="btn" >fitview</button>
+    <button id="zoomIn">zoomIn</button>
+    <button id="zoomOut">zoomOut</button>
+  </div>
+
     <div style="width: 100vw; height: 100vh">
-      <div id="graph" style="width: 100vw; height: 300px;border: 1px solid red;margin-top: 500px;overscroll-behavior: none;"></div>
+      <div id="graph" style="width: 100vw; height: 100vh;"></div>
     </div>
     <script type="module">
       import json  from "./json.js";
@@ -35,29 +41,17 @@
           edit: ['drag-node', 'draw-link']
         },
       };
-      // const data = new Graph(config);
-      // let data = json.data7()
-      //
-      // let nodes = data.classes.map(n => ({...n, style: {
-      //   fill: n.rgb
-      //   }}))
-      // let links = data.edges.map(n => ({...n,  source: n.fromClass, target: n.toClass}))
-      // // Initialize nodes and edges
-      // let reData = { nodes, links }
-      // graph.changeData(JSON.parse(JSON.stringify(reData)));
-      let data = {
-        nodes: [
-          { id:'node1', name: 'node1',size: 20 },
-          { id:'node2', name: 'node2' },
-          { id:'node3', name: 'node3' },
-          { id:'node4', name: 'node4' }
-        ],
-        links: [
-          { source: 'node1',target: 'node2' }
-        ]
-      }
       const graph = new Graph(config);
-      graph.changeData(data)
+      let data = json.data4()
+
+      let nodes = data.classes.map(n => ({...n, style: {
+        fill: n.rgb
+        }}))
+      let links = data.edges.map(n => ({...n,  source: n.fromClass, target: n.toClass}))
+      // Initialize nodes and edges
+      let reData = { nodes, links }
+      graph.changeData(JSON.parse(JSON.stringify(reData)));
+
 
       graph.on('node:click', (e) => {
         console.log('out', e);
@@ -136,10 +130,18 @@
       //   graph.setMode('edit')
       }, 3000);
 
-      // let btn = document.querySelector('button')
-      // btn.addEventListener('click', (e) =>{
-      //   graph.fitView()
-      // })
+      let btn = document.querySelector('button')
+      btn.addEventListener('click', (e) =>{
+        graph.fitView()
+      })
+      let zoomIn = document.querySelector('#zoomIn')
+      zoomIn.addEventListener('click', (e) =>{
+        graph.zoomIn()
+      })
+      let zoomOut = document.querySelector('#zoomOut')
+      zoomOut.addEventListener('click', (e) =>{
+        graph.zoomOut()
+      })
     </script>
   </body>
 </html>

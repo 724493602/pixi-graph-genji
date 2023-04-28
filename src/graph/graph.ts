@@ -70,7 +70,19 @@ export class Graph extends EventEmitter {
   }
 
   // 使全部元素缩放平移到视口中心
-  public fitView(option: fitOptions) {}
+  public fitView(option: fitOptions = { padding: 50 }) {
+    this.layoutController.getCanvasRender().fitView(option);
+  }
+
+  // 放大视口
+  public zoomIn() {
+    this.layoutController.getCanvasRender().zoomIn();
+  }
+
+  // 缩小视口
+  public zoomOut() {
+    this.layoutController.getCanvasRender().zoomOut();
+  }
 
   // 设置行为模式
   setMode(mode: string) {

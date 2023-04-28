@@ -1,5 +1,5 @@
 import { ElementRender } from '@/types/abstract';
-import { ILink, IModel, INode, ModeType } from '@/types';
+import { fitOptions, ILink, IModel, INode, ModeType } from '@/types';
 import { Graph } from '@/graph/graph';
 import {
   Application,
@@ -61,9 +61,6 @@ export default class CanvasRender extends ElementRender {
     });
     this.app.stage.addChild(this.viewport);
 
-    // let currentMode = this.graph.cfg.modes[this.graph.cfg.currentMode] || [];
-    // let pressDrag = currentMode.includes(ModeType.DragCanvas);
-    // let wheelZoom = currentMode.includes(ModeType.ZoomCanvas);
     this.viewport
       .drag()
       .pinch()
@@ -170,6 +167,42 @@ export default class CanvasRender extends ElementRender {
       clientY
     );
     return this.viewport.toWorld(point);
+  }
+
+  fitView(option: fitOptions) {
+    const nodesX = this.graph.data.nodes.map((node) => node.x);
+    const nodesY = this.graph.data.nodes.map((node) => node.y);
+    const minX = Math.min(...nodesX);
+    const maxX = Math.max(...nodesX);
+    const minY = Math.min(...nodesY);
+    const maxY = Math.max(...nodesY);
+
+    const graphWidth = Math.abs(maxX - minX);
+    const graphHeight = Math.abs(maxY - minY);
+    const graphCenter = new Point(
+      minX + graphWidth / 2,
+      minY + graphHeight / 2
+    );
+
+    const worldWidth = graphWidth + option.padding * 2;
+    const worldHeight = graphHeight + option.padding * 2;
+
+    this.viewport.resize(this.width, this.height, worldWidth, worldHeight);
+
+    this.viewport.center = graphCenter;
+    this.viewport.fit(true);
+  }
+
+  private get zoomStep() {
+    return Math.min(this.viewport.worldWidth, this.viewport.worldHeight) / 10;
+  }
+
+  zoomIn() {
+    this.viewport.zoom(-this.zoomStep, true);
+  }
+
+  zoomOut() {
+    this.viewport.zoom(this.zoomStep, true);
   }
 
   clear(): void {}

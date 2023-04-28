@@ -85,4 +85,4 @@ export interface KV {
   [key: string | number | symbol]: any;
 }
 
-export type fitOptions = { padding: number; duration: number };
+export type fitOptions = { padding: number };

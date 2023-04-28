@@ -5,13 +5,14 @@ import {
   BaseLayout,
   IPickModel,
   DeepPartial,
-  IForceCfg
+  IForceCfg,
+  fitOptions
 } from '@/types';
 import Force from '../../layouts/force';
 import { processParallelEdges } from '@/utils/point';
 export default class LayoutController {
   private cfg: GCfg;
-  private elementRender: CanvasRender;
+  private canvasRender: CanvasRender;
   private layoutClass: BaseLayout;
   constructor(private graph: Graph) {
     this.cfg = this.graph.cfg;
@@ -25,13 +26,13 @@ export default class LayoutController {
         type: 'force'
       } as any;
     }
-    this.elementRender = new CanvasRender(this.graph);
+    this.canvasRender = new CanvasRender(this.graph);
     if (this.cfg?.layout?.type === 'force') {
       this.layoutClass = new Force(this.cfg.layout);
       // 力导图 额外执行每次Tick重新渲染
       let { onTick } = this.cfg.layout;
       (this.layoutClass as Force).onTick = () => {
-        this.elementRender.update();
+        this.canvasRender.update();
         onTick && onTick();
       };
     }
@@ -40,7 +41,7 @@ export default class LayoutController {
 
   // 清除视图
   clearView() {
-    this.elementRender.clear();
+    this.canvasRender.clear();
   }
   // force布局 监听拖动并且计算位置
   forceLayoutOnDrag() {
@@ -67,7 +68,7 @@ export default class LayoutController {
     // 给每条边分类型和ID
     processParallelEdges(this.graph.data.links);
     // 渲染节点
-    this.elementRender.render(this.graph.data);
+    this.canvasRender.render(this.graph.data);
     // 调用布局方法计算坐标重新渲染
     this.execLayoutMethod(this.graph.data);
   }
@@ -76,14 +77,14 @@ export default class LayoutController {
   updateLayout(cfg: DeepPartial<IForceCfg> = {}) {
     if (this.cfg!.layout!.type === 'force') {
       (this.layoutClass as Force).updateCfg(cfg);
-      this.elementRender.render(this.graph.data);
+      this.canvasRender.render(this.graph.data);
       (this.layoutClass as Force).execute();
     }
   }
 
   // 不修改数据重新渲染
   public reRender() {
-    this.elementRender.render(this.graph.data);
+    this.canvasRender.render(this.graph.data);
     this.execLayoutMethod(this.graph.data);
   }
 
@@ -115,10 +116,14 @@ export default class LayoutController {
   };
 
   getPointByClient(clientX: number, clientY: number) {
-    return this.elementRender.getPointByClient(clientX, clientY);
+    return this.canvasRender.getPointByClient(clientX, clientY);
   }
 
   getLayoutCfg() {
     return this.layoutClass.getCfg();
+  }
+
+  getCanvasRender() {
+    return this.canvasRender;
   }
 }
