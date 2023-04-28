@@ -7,6 +7,7 @@ import type {
 export * from './mode';
 export * from './abstract';
 export * from './cfg';
+
 import { BaseShape } from '@/types/abstract';
 import { IDefaultLinkStyle, IDefaultNodeStyle, ILabelCfg } from '@/types/cfg';
 

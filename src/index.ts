@@ -1,2 +1,6 @@
-export { Graph, GCfg } from './graph/graph';
+import { Graph } from './graph/graph';
 export * from './types';
+export { Graph };
+export default {
+  Graph
+};
