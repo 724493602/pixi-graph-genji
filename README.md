@@ -4,6 +4,7 @@
 -基于webgl，gpu渲染,内置布局模式
 
 
+## [在线例子Demo](https://724493602.github.io/demo/simple-graph.html)
 ## 安装
 ```shell
 npm i pixi-graph-genji --save
